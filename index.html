@@ -221,6 +221,73 @@
                 max-width: 20%;
             }
         }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff6600;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #003267;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        /* Floating Widgets */
+        .floating-wa {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .floating-wa:hover {
+            background-color: #003267;
+            color: white;
+        }
     </style>
 </head>
 
@@ -463,6 +530,94 @@
             </div>
         </div>
     </section>
+    <footer id="contact" class="bg-dark text-light pt-5 pb-3">
+        <div class="container">
+            <div class="row text-center text-md-start">
+
+                <!-- Brand Info -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-brand">MoMagic Cafe & Foods</h5>
+                    <p class="mb-2">"Natural चव, Magic स्वाद"</p>
+                    <p class="small text-secondary">
+                        पारंपरिक आणि घरगुती चव, प्रेमाने तयार केलेली उत्पादने.
+                    </p>
+                    <h6>Contact Us</h6>
+                    <p class="mb-1">
+                        <i class="bi bi-envelope me-2"></i> mslevapatil@gmail.com
+                    </p>
+                    <p class="mb-1">
+                        <i class="bi bi-telephone me-2"></i> +91 72762 32675
+                    </p>
+                    <p class="mb-1">
+                        <i class="bi bi-whatsapp me-2"></i> WhatsApp: +91 72762 32675
+                    </p>
+                    <p class="mb-0">
+                        <i class="bi bi-geo-alt me-2"></i> Jalgaon, Maharashtra
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-4 mb-4">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#top" class="text-light text-decoration-none">Home</a></li>
+                        <li><a href="#about" class="text-light text-decoration-none">Our Story</a></li>
+                        <li><a href="#products" class="text-light text-decoration-none">Products</a></li>
+                        <li><a href="#contact" class="text-light text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Map Details -->
+                <div class="col-md-4 mb-4">
+                    <!-- Map -->
+                    <div class="mt-2">
+                        <iframe src="https://www.google.com/maps?q=Ayodya%20Nagar%2C%20Jalgaon&output=embed"
+                            width="100%" height="250" style="border:0; border-radius:8px;" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="d-flex justify-content-center gap-3 mb-3">
+                <a href="https://wa.me/7276232675?text=नमस्कार, मला तुमच्या उत्पादनांबद्दल माहिती हवी आहे"
+                    class="text-light fs-4"><i class="bi bi-whatsapp"></i></a>
+                <a href="#" class="text-light fs-4"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-light fs-4"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-light fs-4"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" class="text-light fs-4"><i class="bi bi-youtube"></i></a>
+            </div>
+
+            <hr class="text-secondary">
+
+            <!-- Bottom -->
+            <p class="text-center mb-0 small" style="color: #f4f4f4">
+                &copy; 2026 MoMagic Cafe & Foods. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+    <a href="https://wa.me/7276232675?text=नमस्कार, मला माहिती हवी आहे" class="floating-wa" target="_blank"
+        title="Contact us on WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+    <a href="#top" class="back-to-top" id="backToTopBtn" title="Go to top">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var backToTopBtn = document.getElementById("backToTopBtn");
+
+            // Show or hide the button based on scroll position
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add("show");
+                } else {
+                    backToTopBtn.classList.remove("show");
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
