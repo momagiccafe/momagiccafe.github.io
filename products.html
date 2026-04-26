@@ -1,1 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="MoMagic Cafe & Foods">
+    <title>MoMagic Cafe & Foods</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&family=Google+Sans+Code:ital,wght,MONO@0,300..800,1;1,300..800,1&family=Noto+Sans+Devanagari:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Tiro+Devanagari+Marathi:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Tiro Devanagari Marathi', 'Playfair Display', sans-serif;
+            color: #333;
+            background-color: #fdfbf7;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-brand {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #003267 !important;
+        }
+
+        .brand-highlight {
+            color: #ff6600;
+        }
+
+        .nav-link {
+            font-weight: 400;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            color: #003267 !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff6600 !important;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            height: 85vh;
+            margin-top: 50px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            height: 85vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .hero-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(15, 15, 15, 0.7), rgba(15, 15, 15, 0.4));
+        }
+
+        .hero-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            font-family: 'Playfair Display', 'Tiro Devanagari Marathi', serif;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #f1c40f;
+        }
+
+        /* Buttons */
+        .btn-elegant {
+            background-color: #ff6600;
+            border: 2px solid #ff6600;
+            color: #fff;
+            padding: 12px 35px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            border-radius: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn-elegant:hover {
+            background-color: #2c3e50;
+            border-color: #2c3e50;
+            color: white;
+        }
+
+        .btn-outline-elegant {
+            background-color: transparent;
+            border: 1px solid #ff6600;
+            color: #ff6600;
+            padding: 8px 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            border-radius: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn-outline-elegant:hover {
+            background-color: #ff6600;
+            color: white;
+        }
+
+        /* Section Headers */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #003267;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 2px;
+            background-color: #ff6600;
+            margin: 15px auto 0;
+        }
+
+        /* Products Card 6xn Grid */
+        /* Smaller Screen 2*n Grid */
+        .product-card {
+            background: #fff;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-img-container {
+            height: 220px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+        }
+
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-img-container img {
+            transform: scale(1.1);
+        }
+
+        .product-body {
+            padding: 1.5rem;
+            font-family: 'Tiro Devanagari Marathi';
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-family: 'Tiro Devanagari Marathi';
+        }
+
+        .product-price {
+            color: #d35400;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            font-family: 'Tiro Devanagari Marathi';
+        }
+
+        @media (min-width: 1200px) {
+            .col-xl-custom {
+                flex: 0 0 20%;
+                max-width: 20%;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff6600;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #003267;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        /* Floating Widgets */
+        .floating-wa {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .floating-wa:hover {
+            background-color: #003267;
+            color: white;
+        }
+    </style>
+</head>
+
+<body id="top">
+
+    <nav class="navbar navbar-expand-lg fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand" style="font-family: 'Playfair Display', 'Tiro Devanagari Marathi', sans-serif;"
+                href="#top">Mo<span class="brand-highlight">Magic</span> Cafe & Foods</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-3">
+                    <li class="nav-item"><a class="nav-link" href="#top">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about-us">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000"
+            data-bs-pause="false">
+            <div class="carousel-inner">
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="hero-bg"
+                        style="background-image: url('https://akm-img-a-in.tosshub.com/sites/rd/resources/202008/pickles_1597239292_1200x675.png?size=1200:675');">
+                    </div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">MoMagic Cafe & Foods</span></h1>
+                        <p class="hero-subtitle">"Natural चव, Magic स्वाद"</p>
+                        <a href="#products" class="btn btn-elegant mt-3"
+                            style="background: transparent; border-color: #fff;">
+                            उत्पादने पहा
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="hero-bg"
+                        style="background-image: url('https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_16:9/test%2F68699755fe46debcb39e3d2d0171c75769792643');">
+                    </div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">Home Taste</h1>
+                        <p class="hero-subtitle">Pure & Traditional Taste</p>
+                        <a href="#products" class="btn btn-elegant mt-3"
+                            style="background: transparent; border-color: #fff;">
+                            उत्पादने पहा
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="carousel-item">
+                    <div class="hero-bg"
+                        style="background-image: url('https://www.southernliving.com/thmb/KYAa47q12lkPFJNrHzpbddPt428=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Dill_Pickle_009-5fc10393559d46fea32738228c2e3f20.jpg');">
+                    </div>
+                    <div class="hero-content">
+                        <h1 class="hero-title">Fresh & Natural</h1>
+                        <p class="hero-subtitle">No Chemicals, Only Love</p>
+                        <a href="#products" class="btn btn-elegant mt-3"
+                            style="background: transparent; border-color: #fff;">
+                            उत्पादने पहा
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="products" class="py-3 mt-3">
+        <div class="container">
+            <h2 class="section-title" style="font-family:'Tiro Devanagari Marathi';">आमची खास उत्पादने</h2>
+
+            <div class="row g-4">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-custom"
+                    style="padding-right: 6px; padding-left: 6px;">
+                    <div class="product-card">
+                        <div class="product-img-container">
+                            <img src="https://i.ytimg.com/vi/rGTLQcHS_zA/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDZ2paXxPnHFQ9kKCOuboGsPWxUHA"
+                                alt="आंब्याचे पदार्थ">
+
+                        </div>
+                        <div class="product-body">
+                            <h4 class="product-title">आंब्याचे पदार्थ</h4>
+                            <div class="product-price">From ₹149/kg</div>
+                            <a href="products.html?category=mango" class="btn btn-outline-elegant">अधिक माहिती</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-custom"
+                    style="padding-right: 6px; padding-left: 6px;">
+                    <div class="product-card">
+                        <div class="product-img-container">
+                            <img src="https://d3pc1xvrcw35tl.cloudfront.net/images/400x300/whatsapp-image-2024-11-15-at-10.53.17_2024111339819.jpeg"
+                                alt="आवळ्याचे पदार्थ">
+                        </div>
+                        <div class="product-body">
+                            <h4 class="product-title">आवळ्याचे पदार्थ</h4>
+                            <div class="product-price">From ₹149/kg</div>
+                            <a href="products.html?category=amla" class="btn btn-outline-elegant">अधिक माहिती</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-custom"
+                    style="padding-right: 6px; padding-left: 6px;">
+                    <div class="product-card">
+                        <div class="product-img-container">
+                            <img src="https://images.timesnowhindi.com/photo/msid-154134936/154134936.jpg"
+                                alt="लिंबूचे पदार्थ">
+                        </div>
+                        <div class="product-body">
+                            <h4 class="product-title">लिंबूचे पदार्थ</h4>
+                            <div class="product-price">From ₹149/kg</div>
+                            <a href="products.html?category=lemon" class="btn btn-outline-elegant">अधिक माहिती</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-custom"
+                    style="padding-right: 6px; padding-left: 6px;">
+                    <div class="product-card">
+                        <div class="product-img-container">
+                            <img src="https://www.livehindustan.com/lh-img/smart/img/2026/03/09/1200x900/Untitled_design_1772502732631_1772502746414_1773048030415.jpg"
+                                alt="अदरक पदार्थ">
+                        </div>
+                        <div class="product-body">
+                            <h4 class="product-title">अदरक पदार्थ</h4>
+                            <div class="product-price">From ₹149/kg</div>
+                            <a href="products.html?category=ginger" class="btn btn-outline-elegant">अधिक माहिती</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-custom"
+                    style="padding-right: 6px; padding-left: 6px;">
+                    <div class="product-card">
+                        <div class="product-img-container">
+                            <img src="https://www.livehindustan.com/lh-img/smart/img/2026/03/09/1200x900/Untitled_design_1772502732631_1772502746414_1773048030415.jpg"
+                                alt="अदरक पदार्थ">
+                        </div>
+                        <div class="product-body">
+                            <h4 class="product-title">अदरक पदार्थ</h4>
+                            <div class="product-price">From ₹149/kg</div>
+                            <a href="products.html?category=ginger" class="btn btn-outline-elegant">अधिक माहिती</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3 pt-3">
+                <a href="#" class="btn btn-elegant">सर्व उत्पादने पहा</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 text-center bg-dark text-light">
+        <div class="container">
+            <h2 style="font-family:'Tiro Devanagari Marathi';">आजच ऑर्डर करा!</h2>
+            <p>घरगुती चव अनुभवण्यासाठी आत्ताच WhatsApp वर संपर्क करा</p>
+            <a href="https://wa.me/7276232675?text=नमस्कार%20मी%20तुमच्या%20वेबसाईटला%20भेट%20दिली%20आहे%20आणि%20मला%20उत्पादनांबद्दल%20माहिती%20हवी%20आहे"
+                class="btn btn-elegant">
+                WhatsApp वर ऑर्डर करा
+            </a>
+        </div>
+    </section>
+
+    <section id="about-us" class="py-5 bg-light">
+        <div class="container text-center">
+            <h2 class="section-title" style="font-family:'Tiro Devanagari Marathi';">आमच्या बद्दल</h2>
+            <p class="mx-auto" style="max-width: 800px;">
+                आम्ही पारंपरिक आणि घरगुती पद्धतीने तयार केलेली उत्पादने तुमच्यापर्यंत पोहोचवण्याचा प्रामाणिक प्रयत्न
+                करतो. आमच्या प्रत्येक उत्पादनामागे चव, गुणवत्ता आणि विश्वास यांचा समतोल साधण्याची भावना आहे.<br><br>
+
+                आमची उत्पादने निवडक आणि ताज्या घटकांपासून तयार केली जातात. कोणतेही कृत्रिम रंग किंवा हानिकारक रसायने न
+                वापरता, स्वच्छता आणि पारंपरिक पद्धतींचा वापर करून आम्ही प्रत्येक उत्पादन बनवतो.<br><br>
+
+                प्रत्येक घासामध्ये तुम्हाला घरगुती चवीचा खरा अनुभव मिळावा, हा आमचा उद्देश आहे. आमच्या उत्पादनांमध्ये
+                केवळ स्वाद नाही, तर आपुलकी, परंपरा आणि प्रेम यांचा संगम आहे.
+            </p>
+        </div>
+    </section>
+
+    <section id="founder" class="py-5 bg-light border-top border-bottom">
+        <div class="container">
+
+            <h2 class="section-title" style="font-family:'Tiro Devanagari Marathi';">
+                संस्थापक
+            </h2>
+
+            <div class="row justify-content-center g-4">
+
+                <!-- Founder 1 -->
+                <div class="col-md-5">
+                    <div class="text-center p-4 bg-white shadow-sm h-100">
+
+                        <img src="https://icons.veryicon.com/png/o/miscellaneous/bitisland-world/person-18.png"
+                            alt="Founder 1" class="rounded-circle shadow mb-3"
+                            style="width: 180px; height: 180px; object-fit: cover;">
+
+                        <h4 style="font-family:'Tiro Devanagari Marathi'; color:#2c3e50;">
+                            संस्थापक - सुनील महाजन
+                        </h4>
+
+                        <p>
+                            MoMagic Cafe & Foods ची सुरुवात पारंपरिक घरगुती चव जपण्यासाठी करण्यात आली.
+                            शुद्ध आणि नैसर्गिक उत्पादन तयार करणे हे आमचे मुख्य उद्दिष्ट आहे.
+                        </p>
+
+                        <p class="fw-bold" style="color:#d35400;">
+                            “Natural चव, Trust Forever”
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Founder 2 -->
+                <div class="col-md-5">
+                    <div class="text-center p-4 bg-white shadow-sm h-100">
+
+                        <img src="https://icons.veryicon.com/png/o/miscellaneous/bitisland-world/person-18.png"
+                            alt="Founder 2" class="rounded-circle shadow mb-3"
+                            style="width: 180px; height: 180px; object-fit: cover;">
+
+                        <h4 style="font-family:'Tiro Devanagari Marathi'; color:#2c3e50;">
+                            संचालक - आरती महाजन
+                        </h4>
+
+                        <p>
+                            प्रत्येक उत्पादन प्रेमाने, पारंपरिक पद्धतीने आणि उत्तम दर्जाच्या घटकांपासून तयार केले जाते.
+                            ग्राहकांचे समाधान हेच आमचे यश आहे.
+                        </p>
+
+                        <p class="fw-bold" style="color:#d35400;">
+                            “Quality & Tradition Together”
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <footer id="contact" class="bg-dark text-light pt-5 pb-3">
+        <div class="container">
+            <div class="row text-center text-md-start">
+
+                <!-- Brand Info -->
+                <div class="col-md-4 mb-4">
+                    <h5 class="footer-brand">MoMagic Cafe & Foods</h5>
+                    <p class="mb-2">"Natural चव, Magic स्वाद"</p>
+                    <p class="small text-secondary">
+                        पारंपरिक आणि घरगुती चव, प्रेमाने तयार केलेली उत्पादने.
+                    </p>
+                    <h6>Contact Us</h6>
+                    <p class="mb-1">
+                        <i class="bi bi-envelope me-2"></i> mslevapatil@gmail.com
+                    </p>
+                    <p class="mb-1">
+                        <i class="bi bi-telephone me-2"></i> +91 72762 32675
+                    </p>
+                    <p class="mb-1">
+                        <i class="bi bi-whatsapp me-2"></i> WhatsApp: +91 72762 32675
+                    </p>
+                    <p class="mb-0">
+                        <i class="bi bi-geo-alt me-2"></i> Jalgaon, Maharashtra
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col-md-4 mb-4">
+                    <h6>Quick Links</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#top" class="text-light text-decoration-none">Home</a></li>
+                        <li><a href="#about" class="text-light text-decoration-none">Our Story</a></li>
+                        <li><a href="#products" class="text-light text-decoration-none">Products</a></li>
+                        <li><a href="#contact" class="text-light text-decoration-none">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Map Details -->
+                <div class="col-md-4 mb-4">
+                    <!-- Map -->
+                    <div class="mt-2">
+                        <iframe src="https://www.google.com/maps?q=Ayodya%20Nagar%2C%20Jalgaon&output=embed"
+                            width="100%" height="250" style="border:0; border-radius:8px;" loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Icons -->
+            <div class="d-flex justify-content-center gap-3 mb-3">
+                <a href="https://wa.me/7276232675?text=नमस्कार, मला तुमच्या उत्पादनांबद्दल माहिती हवी आहे"
+                    class="text-light fs-4"><i class="bi bi-whatsapp"></i></a>
+                <a href="#" class="text-light fs-4"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="text-light fs-4"><i class="bi bi-facebook"></i></a>
+                <a href="#" class="text-light fs-4"><i class="bi bi-twitter-x"></i></a>
+                <a href="#" class="text-light fs-4"><i class="bi bi-youtube"></i></a>
+            </div>
+
+            <hr class="text-secondary">
+
+            <!-- Bottom -->
+            <p class="text-center mb-0 small" style="color: #f4f4f4">
+                &copy; 2026 MoMagic Cafe & Foods. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+    <a href="https://wa.me/7276232675?text=नमस्कार, मला माहिती हवी आहे" class="floating-wa" target="_blank"
+        title="Contact us on WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+    <a href="#top" class="back-to-top" id="backToTopBtn" title="Go to top">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var backToTopBtn = document.getElementById("backToTopBtn");
+
+            // Show or hide the button based on scroll position
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add("show");
+                } else {
+                    backToTopBtn.classList.remove("show");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
