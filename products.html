@@ -310,7 +310,77 @@
             </div>
         </div>
     </nav>
+    <section id="category-products" class="py-5">
+    <div class="container">
+        <h2 class="section-title" id="categoryTitle">Products</h2>
 
+        <div class="row g-4" id="productContainer">
+            <!-- Products will load here dynamically -->
+        </div>
+    </div>
+</section>
+<script>
+    // Product Data (You can expand this anytime)
+    const productsData = {
+        mango: [
+            {
+                name: "आंबा लोणचं",
+                price: "₹180/kg",
+                img: "https://vismaifood.com/storage/app/uploads/public/0d4/6a1/85b/thumb__700_0_0_0_auto.jpg"
+            },
+            {
+                name: "आंबा मुरंबा",
+                price: "₹200/kg",
+                img: "https://www.cookingcarnival.com/wp-content/uploads/2021/04/Aam-ka-murabba.jpg"
+            },
+            {
+                name: "आंबा जॅम",
+                price: "₹150/kg",
+                img: "https://www.vegrecipesofindia.com/wp-content/uploads/2022/05/mango-jam-recipe.jpg"
+            },
+            {
+                name: "आम पापड",
+                price: "₹170/kg",
+                img: "https://www.indianhealthyrecipes.com/wp-content/uploads/2022/04/aam-papad.jpg"
+            }
+        ]
+    };
+
+    // Get category from URL
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+
+    const container = document.getElementById("productContainer");
+    const title = document.getElementById("categoryTitle");
+
+    if (productsData[category]) {
+        title.innerText = "आंब्याचे पदार्थ";
+
+        productsData[category].forEach(product => {
+            const productHTML = `
+                <div class="col-6 col-md-4 col-lg-3">
+                    <div class="product-card">
+                        <div class="product-img-container">
+                            <img src="${product.img}" alt="${product.name}">
+                        </div>
+                        <div class="product-body">
+                            <h4 class="product-title">${product.name}</h4>
+                            <div class="product-price">${product.price}</div>
+                            <a href="https://wa.me/7276232675?text=मला ${product.name} बद्दल माहिती हवी आहे" 
+                               class="btn btn-outline-elegant">
+                               ऑर्डर करा
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+            container.innerHTML += productHTML;
+        });
+
+    } else {
+        title.innerText = "No Products Found";
+    }
+</script>
     
     <section id="products" class="py-3 mt-3">
         <div class="container">
