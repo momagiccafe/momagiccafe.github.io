@@ -1,0 +1,230 @@
+html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Tiro Devanagari Marathi', 'Playfair Display', sans-serif;
+            color: #333;
+            background-color: #fdfbf7;
+        }
+
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-brand {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #003267 !important;
+        }
+
+        .brand-highlight {
+            color: #ff6600;
+        }
+
+        .nav-link {
+            font-weight: 400;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            color: #003267 !important;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: #ff6600 !important;
+        }
+
+        .navbar-toggler {
+            border: none;
+        }
+
+        /* Category Products Section */
+        .category-products {
+            margin-top: 70px;
+        }
+
+
+        /* Buttons */
+        .btn-elegant {
+            background-color: #ff6600;
+            border: 2px solid #ff6600;
+            color: #fff;
+            padding: 12px 35px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            border-radius: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn-elegant:hover {
+            background-color: #2c3e50;
+            border-color: #2c3e50;
+            color: white;
+        }
+
+        .btn-outline-elegant {
+            background-color: transparent;
+            border: 1px solid #ff6600;
+            color: #ff6600;
+            padding: 8px 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+            border-radius: 0;
+            transition: all 0.4s ease;
+        }
+
+        .btn-outline-elegant:hover {
+            background-color: #ff6600;
+            color: white;
+        }
+
+        /* Section Headers */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #003267;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 120px;
+            height: 2px;
+            background-color: #ff6600;
+            margin: 15px auto 0;
+        }
+
+        /* Products Card 6xn Grid */
+        /* Smaller Screen 2*n Grid */
+        .product-card {
+            background: #fff;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .product-img-container {
+            height: 220px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+        }
+
+        .product-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-img-container img {
+            transform: scale(1.1);
+        }
+
+        .product-body {
+            padding: 1.5rem;
+            font-family: 'Tiro Devanagari Marathi';
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-family: 'Tiro Devanagari Marathi';
+        }
+
+        .product-price {
+            color: #d35400;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            font-family: 'Tiro Devanagari Marathi';
+        }
+
+        @media (min-width: 1200px) {
+            .col-xl-custom {
+                flex: 0 0 20%;
+                max-width: 20%;
+            }
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #ff6600;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #003267;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: #fff;
+        }
+
+        /* Floating Widgets */
+        .floating-wa {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .floating-wa:hover {
+            background-color: #003267;
+            color: white;
+        }
